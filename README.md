@@ -1,67 +1,18 @@
-# 🧭 About Me
+# 💫 About Me:
+# 🧭 About Me<br><br>I’m a **Network Security Administrator** and IT systems builder focused on designing **secure, automated, and reliable infrastructure**.<br><br>Over time, I’ve worked across Active Directory environments, Docker ecosystems, and enterprise IT operations — building tools and workflows that improve visibility, security, and operational efficiency in real-world systems.<br><br>My focus is simple: create infrastructure that is **stable, scalable, and secure by design** — not afterthought.<br><br>> *Good systems should be invisible when they work, and easy to understand when they don’t.*<br><br>-----<br><br>## ⚙️ What I Work On<br><br>- Active Directory & enterprise identity management<br>- Docker-based infrastructure and self-hosted systems<br>- Network security hardening and monitoring<br>- IT automation and scripting (PowerShell, Bash, Linux, Windows)<br>- Observability and logging systems (Grafana, monitoring stacks)<br>- Secure deployments and production-ready environments<br>- Self-hosted platforms and DevSecOps-style workflows<br><br>-----<br><br>## 🧠 Philosophy<br><br>- Security should be **built in**, not bolted on<br>- Automation reduces human error more than it saves time<br>- Documentation is part of the system, not an afterthought<br>- Simplicity scales better than complexity<br>- If it can break silently, it will eventually break loudly<br><br>-----<br><br>## 🧰 Technologies & Tools<br><br>|Category                |Stack                                    |<br>|------------------------|-----------------------------------------|<br>|**Identity & Directory**|Windows Server · Active Directory · GPO  |<br>|**OS & Environments**   |Linux (Ubuntu) · Windows Server          |<br>|**Containers**          |Docker · Docker Swarm                    |<br>|**Scripting**           |PowerShell · Bash                        |<br>|**Monitoring**          |Grafana · log pipelines · alerting stacks|<br>|**Security**            |CrowdSec · Fail2Ban · network hardening  |<br><br>-----<br><br>## 🚀 Projects & Systems<br><br>I actively build and maintain infrastructure-focused tools and platforms, including:<br><br>- 📊 Active Directory monitoring dashboards and replication visibility tools<br>- 🐳 Docker-based self-hosted infrastructure stacks<br>- 🔐 Security monitoring integrations (CrowdSec, Fail2Ban, log aggregation)<br>- ⚙️ IT automation scripts for enterprise environments<br>- 🛠️ Internal tooling for MSP-style operations and system management<br><br>-----<br><br>## 🔒 Focus<br><br>I don’t build software for hype — I build **systems that run quietly, securely, and reliably** in production environments.<br><br>-----<br><br>*Every system I build is designed with one goal:*<br>**make infrastructure predictable, secure, and easy to operate at scale.**
 
-I’m a **Network Security Administrator** and IT systems builder focused on designing **secure, automated, and reliable infrastructure**.
 
-Over time, I’ve worked across Active Directory environments, Docker ecosystems, and enterprise IT operations — building tools and workflows that improve visibility, security, and operational efficiency in real-world systems.
+## 🌐 Socials:
+[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/rPPHbFk6ZH) [![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/itrankilo) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/itrankilo) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/jhonattan-jimenez-82375b9a) [![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?logo=Reddit&logoColor=white)](https://reddit.com/user/i-trankilo) [![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white)](https://tiktok.com/@itrankilo) [![Twitch](https://img.shields.io/badge/Twitch-%239146FF.svg?logo=Twitch&logoColor=white)](https://twitch.tv/itrankilo) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@iTrankilo) 
 
-My focus is simple: create infrastructure that is **stable, scalable, and secure by design** — not afterthought.
+# 💻 Tech Stack:
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat-square&logo=amazon-aws&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=Cloudflare&logoColor=white) ![Linode](https://img.shields.io/badge/linode-00A95C?style=flat-square&logo=linode&logoColor=white) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=flat-square&logo=google-cloud&logoColor=white) ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white) ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=flat-square&logo=digitalOcean&logoColor=white) ![OVH](https://img.shields.io/badge/ovh-%23123F6D.svg?style=flat-square&logo=ovh&logoColor=#123F6D) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=flat-square&logo=apache&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)
+# 📊 GitHub Stats:
+![](https://github-readme-stats.shion.dev/api?username=onebyjorah&theme=react&hide_border=false&include_all_commits=true&count_private=true)<br/>
+![](https://streak-stats.demolab.com/?user=onebyjorah&theme=react&hide_border=false)<br/>
+![](https://github-readme-stats.shion.dev/api/top-langs/?username=onebyjorah&theme=react&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
-> *Good systems should be invisible when they work, and easy to understand when they don’t.*
+---
+[![](https://komarev.com/ghpvc/?username=onebyjorah&icon=0&color=0)](https://visitcount.itsvg.in)
 
------
-
-## ⚙️ What I Work On
-
-- Active Directory & enterprise identity management
-- Docker-based infrastructure and self-hosted systems
-- Network security hardening and monitoring
-- IT automation and scripting (PowerShell, Bash, Linux, Windows)
-- Observability and logging systems (Grafana, monitoring stacks)
-- Secure deployments and production-ready environments
-- Self-hosted platforms and DevSecOps-style workflows
-
------
-
-## 🧠 Philosophy
-
-- Security should be **built in**, not bolted on
-- Automation reduces human error more than it saves time
-- Documentation is part of the system, not an afterthought
-- Simplicity scales better than complexity
-- If it can break silently, it will eventually break loudly
-
------
-
-## 🧰 Technologies & Tools
-
-|Category                |Stack                                    |
-|------------------------|-----------------------------------------|
-|**Identity & Directory**|Windows Server · Active Directory · GPO  |
-|**OS & Environments**   |Linux (Ubuntu) · Windows Server          |
-|**Containers**          |Docker · Docker Swarm                    |
-|**Scripting**           |PowerShell · Bash                        |
-|**Monitoring**          |Grafana · log pipelines · alerting stacks|
-|**Security**            |CrowdSec · Fail2Ban · network hardening  |
-
------
-
-## 🚀 Projects & Systems
-
-I actively build and maintain infrastructure-focused tools and platforms, including:
-
-- 📊 Active Directory monitoring dashboards and replication visibility tools
-- 🐳 Docker-based self-hosted infrastructure stacks
-- 🔐 Security monitoring integrations (CrowdSec, Fail2Ban, log aggregation)
-- ⚙️ IT automation scripts for enterprise environments
-- 🛠️ Internal tooling for MSP-style operations and system management
-
------
-
-## 🔒 Focus
-
-I don’t build software for hype — I build **systems that run quietly, securely, and reliably** in production environments.
-
------
-
-*Every system I build is designed with one goal:*
-**make infrastructure predictable, secure, and easy to operate at scale.**
+<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
