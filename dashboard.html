@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JorahOne — Portfolio Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+  --green: #3fb950;
+  --yellow: #d29922;
+  --red: #f85149;
+  --blue: #58a6ff;
+  --orange: #d0782a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+.header { text-align: center; padding: 40px 0 30px; }
+.header h1 { font-size: 2.5em; background: linear-gradient(135deg, #58a6ff, #f78166); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header p { color: var(--text-muted); margin-top: 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 30px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+.stat-card .value { font-size: 2em; font-weight: 700; }
+.stat-card .label { color: var(--text-muted); font-size: 0.85em; margin-top: 4px; }
+.stat-card .value.green { color: var(--green); }
+.stat-card .value.yellow { color: var(--yellow); }
+.stat-card .value.red { color: var(--red); }
+.stat-card .value.blue { color: var(--blue); }
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 16px; margin-bottom: 30px; }
+.chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+.chart-card h3 { margin-bottom: 12px; font-size: 1em; color: var(--text-muted); }
+.repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.repo-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; transition: border-color 0.2s, transform 0.2s; }
+.repo-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.repo-card .name { font-size: 1.1em; font-weight: 600; color: var(--blue); }
+.repo-card .name a { color: inherit; text-decoration: none; }
+.repo-card .name a:hover { text-decoration: underline; }
+.repo-card .desc { color: var(--text-muted); font-size: 0.85em; margin: 6px 0 10px; min-height: 2.5em; }
+.repo-card .meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.8em; }
+.repo-card .meta .tag { background: rgba(88,166,255,0.1); color: var(--blue); padding: 2px 8px; border-radius: 4px; }
+.repo-card .meta .tag.green { background: rgba(63,185,80,0.1); color: var(--green); }
+.repo-card .meta .tag.yellow { background: rgba(210,153,34,0.1); color: var(--yellow); }
+.repo-card .meta .tag.red { background: rgba(248,81,73,0.1); color: var(--red); }
+.repo-card .health-bar { margin-top: 10px; height: 4px; border-radius: 2px; background: var(--border); overflow: hidden; }
+.repo-card .health-bar .fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+.repo-card .actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+.repo-card .actions a { font-size: 0.8em; color: var(--text-muted); text-decoration: none; border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; }
+.repo-card .actions a:hover { color: var(--blue); border-color: var(--blue); }
+.grade-A { border-left: 3px solid var(--green); }
+.grade-B { border-left: 3px solid var(--blue); }
+.grade-C { border-left: 3px solid var(--yellow); }
+.grade-D { border-left: 3px solid var(--orange); }
+.grade-F { border-left: 3px solid var(--red); }
+.footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.85em; }
+@media (max-width: 600px) { .charts { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🚀 JorahOne Portfolio</h1>
+  <p>29 repositories · Infrastructure · AI · DevOps</p>
+</div>
+
+<div class="stats" id="stats"></div>
+<div class="charts">
+  <div class="chart-card"><h3>Score Distribution</h3><canvas id="scoreChart"></canvas></div>
+  <div class="chart-card"><h3>Language Breakdown</h3><canvas id="langChart"></canvas></div>
+</div>
+
+<div class="repo-grid" id="repoGrid"></div>
+<div class="footer">
+  Generated July 4, 2026 · JorahOne Infrastructure Suite · <a href="https://github.com/OneByJorah" style="color:var(--blue)">@OneByJorah</a>
+</div>
+
+<script>
+const repos = [
+  {name:"hermes-voice", desc:"Self-hosted phone AI assistant — STT → LLM → TTS pipeline", lang:"Python", score:70, grade:"B", license:"MIT", docker:true, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"local", screenshot:"hermes-voice"},
+  {name:"StackDeploy", desc:"Production-ready Docker Compose stack for Hermes agents", lang:"JavaScript", score:65, grade:"C", license:"MIT", docker:true, ci:true, tests:true, docs:true, security:true, issues:20, deploy:"docker", screenshot:"StackDeploy"},
+  {name:"ChatForge", desc:"Edge-native AI chat on Cloudflare Workers", lang:"TypeScript", score:55, grade:"C", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"cloudflare", screenshot:"ChatForge"},
+  {name:"StackDeploy-Dashboard", desc:"Unified dashboard for self-hosted Docker services", lang:"JavaScript", score:50, grade:"D", license:"MIT", docker:true, ci:true, tests:true, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"NetVault", desc:"Network backup & asset management dashboard", lang:"Python", score:55, grade:"C", license:"MIT", docker:false, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"SentryView", desc:"Web-based RTSP NVR dashboard for IP cameras", lang:"Python", score:60, grade:"C", license:"MIT", docker:true, ci:false, tests:false, docs:true, security:true, issues:10, deploy:"docker"},
+  {name:"jorahone-ai-stack", desc:"Unified AI infrastructure stack with LLM routing", lang:"JavaScript", score:50, grade:"D", license:"MIT", docker:true, ci:false, tests:true, docs:true, security:true, issues:10, deploy:"docker"},
+  {name:"msp-dashboard", desc:"Self-hosted IT operations control plane", lang:"Python", score:45, grade:"D", license:"MIT", docker:true, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"JorahOne", desc:"Organization profile & operations hub", lang:"Markdown", score:35, grade:"F", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"none"},
+  {name:"J1-NOC-Platform", desc:"Enterprise NOC operations platform", lang:"Python", score:62, grade:"C", license:"MIT", docker:true, ci:true, tests:false, docs:true, security:true, issues:35, deploy:"docker"},
+  {name:"J1-NOC-Nexus", desc:"Unified NOC with Telegram bot & SNMP discovery", lang:"Python", score:55, grade:"C", license:"MIT", docker:true, ci:false, tests:true, docs:true, security:true, issues:10, deploy:"docker"},
+  {name:"J1-MSP-Toolkit", desc:"Windows 10/11 provisioning & debloat utility", lang:"PowerShell", score:35, grade:"F", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"hermes-3d-office", desc:"Animated 3D virtual office for Hermes agents", lang:"Python", score:55, grade:"C", license:"MIT", docker:true, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"EdgeRouter", desc:"Raspberry Pi router dashboard & management", lang:"Python", score:50, grade:"D", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"it-training-system", desc:"Self-hosted IT training management platform", lang:"Python", score:50, grade:"D", license:"MIT", docker:true, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"CostForge", desc:"Self-hosted cloud cost estimation dashboard", lang:"Python", score:45, grade:"D", license:"MIT", docker:true, ci:false, tests:false, docs:true, security:true, issues:20, deploy:"docker"},
+  {name:"ADSentinel", desc:"Active Directory Domain Controller monitoring", lang:"Python", score:45, grade:"D", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"CommandDesk", desc:"Self-hosted AI helpdesk agent", lang:"Python", score:58, grade:"C", license:"MIT", docker:true, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"EdgeGateway", desc:"Raspberry Pi Cloudflare WARP gateway", lang:"Shell", score:40, grade:"D", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"ollama-benchmark-dashboard", desc:"Ollama LLM benchmarking platform", lang:"Python", score:65, grade:"C", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"autoresearch", desc:"Autonomous AI research agent (fork)", lang:"Python", score:55, grade:"C", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"GroundStation", desc:"Satellite ground station suite (fork)", lang:"JavaScript", score:45, grade:"D", license:"GPL-3.0", docker:true, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"arah", desc:"Full auto-setup Hermes stack (private)", lang:"JavaScript", score:50, grade:"D", license:"MIT", docker:true, ci:false, tests:true, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"agent-mission-control", desc:"Hermes Mission Control dashboard (private)", lang:"JavaScript", score:30, grade:"F", license:"MIT", docker:false, ci:false, tests:true, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"fortress", desc:"Stealth Chromium engine (fork)", lang:"Python", score:72, grade:"B", license:"BSD-3", docker:true, ci:true, tests:true, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"claude-mcp-osticket", desc:"MCP server for osTicket integration (fork)", lang:"TypeScript", score:60, grade:"C", license:"MIT", docker:false, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"ChronoGuard", desc:"Chrony NTP monitoring dashboard (fork)", lang:"Python", score:45, grade:"D", license:"MIT", docker:false, ci:false, tests:false, docs:true, security:true, issues:0, deploy:"local"},
+  {name:"age-of-agents-hermes", desc:"Pixel-art AI session visualizer (fork)", lang:"TypeScript", score:65, grade:"C", license:"MIT", docker:true, ci:true, tests:false, docs:true, security:true, issues:0, deploy:"docker"},
+  {name:"ghost-os", desc:"AI computer-use for macOS (fork)", lang:"Swift", score:65, grade:"C", license:"MIT", docker:false, ci:false, tests:true, docs:true, security:true, issues:0, deploy:"local"}
+];
+
+const grades = {A:0, B:0, C:0, D:0, F:0};
+const langs = {};
+repos.forEach(r => {
+  grades[r.grade]++;
+  langs[r.lang] = (langs[r.lang]||0)+1;
+});
+
+document.getElementById('stats').innerHTML = [
+  {v:repos.length, l:'Repositories', c:'blue'},
+  {v:repos.filter(r=>r.ci).length+'/'+repos.length, l:'CI/CD', c:'green'},
+  {v:repos.filter(r=>r.tests).length+'/'+repos.length, l:'With Tests', c:'yellow'},
+  {v:repos.filter(r=>r.docker).length+'/'+repos.length, l:'Dockerized', c:'blue'},
+  {v:repos.filter(r=>r.docs).length+'/'+repos.length, l:'Documented', c:'green'},
+  {v:repos.filter(r=>r.license!=='none').length+'/'+repos.length, l:'Licensed', c:'green'}
+].map(s => `<div class="stat-card"><div class="value ${s.c}">${s.v}</div><div class="label">${s.l}</div></div>`).join('');
+
+new Chart(document.getElementById('scoreChart'), {
+  type: 'bar',
+  data: {
+    labels: Object.keys(grades),
+    datasets: [{
+      label: 'Repositories',
+      data: Object.values(grades),
+      backgroundColor: ['#3fb950','#58a6ff','#d29922','#d0782a','#f85149'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+    plugins: { legend: { display: false } }
+  }
+});
+
+new Chart(document.getElementById('langChart'), {
+  type: 'doughnut',
+  data: {
+    labels: Object.keys(langs),
+    datasets: [{
+      data: Object.values(langs),
+      backgroundColor: ['#3776AB','#F7DF1E','#3178C6','#5391FE','#E34F26','#ff6600','#F05138']
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+document.getElementById('repoGrid').innerHTML = repos.sort((a,b) => b.score - a.score).map(r => {
+  const gradeClass = 'grade-' + r.grade;
+  const scoreColor = r.score >= 70 ? 'green' : r.score >= 50 ? 'yellow' : 'red';
+  const barWidth = r.score;
+  const barColor = r.score >= 70 ? '#3fb950' : r.score >= 50 ? '#d29922' : '#f85149';
+  const repoPath = r.name.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+  return `<div class="repo-card ${gradeClass}">
+    <div class="name"><a href="https://github.com/OneByJorah/${r.name}">${r.name}</a> <span style="float:right;font-size:0.85em;color:var(--${scoreColor})">${r.score}/100</span></div>
+    <div class="desc">${r.desc}</div>
+    <div class="meta">
+      <span class="tag">${r.lang}</span>
+      <span class="tag ${r.license==='none'?'red':'green'}">${r.license}</span>
+      ${r.docker ? '<span class="tag green">🐳 Docker</span>' : ''}
+      ${r.ci ? '<span class="tag green">⚙️ CI/CD</span>' : '<span class="tag yellow">❌ No CI</span>'}
+      ${r.tests ? '<span class="tag green">🧪 Tests</span>' : '<span class="tag yellow">❌ No Tests</span>'}
+      ${r.issues > 0 ? `<span class="tag yellow">🐛 ${r.issues} issues</span>` : ''}
+    </div>
+    <div class="health-bar"><div class="fill" style="width:${barWidth}%;background:${barColor}"></div></div>
+    <div class="actions">
+      <a href="AUDIT.md">📋 Audit Report</a>
+      <a href="SECURITY_REPORT.md">🔒 Security Report</a>
+      <a href="https://github.com/OneByJorah/${r.name}">GitHub ↗</a>
+    </div>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+name: JorahOne Portfolio CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-python:
+    name: Lint Python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/ruff-action@v3
+        with:
+          args: check --select ALL --ignore E501,D203,D212,D213,D400,D404,D415,D416,D100,D101,D102,D103,D104,D105,D107,ANN
+
+  lint-actions:
+    name: Lint GitHub Actions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install yamllint
+      - run: yamllint .github/
+
+  check-standards:
+    name: Check Repository Standards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required files in all repos
+        run: |
+          missing=0
+          for repo in */; do
+            name=${repo%/}
+            for file in LICENSE SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md .gitignore; do
+              if [ ! -f "$repo/$file" ]; then
+                echo "MISSING: $name/$file"
+                missing=$((missing+1))
+              fi
+            done
+          done
+          echo "Missing files: $missing"
+          exit $missing
+
+  test-repos:
+    name: Test Select Repos
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: [fortress, ChatForge]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup ${{ matrix.repo }}
+        working-directory: ${{ matrix.repo }}
+        run: |
+          if [ -f package.json ]; then npm ci || npm install; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f setup.py ] || [ -f pyproject.toml ]; then pip install -e . || true; fi
+      - name: Run tests
+        working-directory: ${{ matrix.repo }}
+        run: |
+          if [ -f package.json ]; then npm test; fi
+          if [ -f Makefile ]; then make test; fi
