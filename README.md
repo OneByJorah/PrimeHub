@@ -1,30 +1,18 @@
-# JorahOne (JorahOne)
+# JorahOne
 
-**Version:** v0.1  
-**Status:** Active Development  
-**Repository:** https://github.com/OneByJorah/JorahOne
+> Personal operations and project hub for infrastructure and automation workflows.
 
----
+![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-active-%23FFB300?style=for-the-badge)
+![Language](https://img.shields.io/badge/language-Python-informational?style=for-the-badge)
+![Platform](https://img.shields.io/badge/platform-linux-informational?style=for-the-badge)
 
-## Table of Contents
+JorahOne is an enterprise-grade, ops-precise platform built for VIDE and SMB operations. Run it solo. Deliver results.
 
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Technology Stack](#technology-stack)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Service Management](#service-management)
-- [Project Structure](#project-structure)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
-- [Author](#author)
-
----
-
-## Overview
-
-Personal operations and project hub focused on showcasing infrastructure and automation workflows.
+- Operational dashboard and monitoring (per repo).
+- Exportable data / reports where supported.
+- Extensible service-based design.
+- Dark-themed UI where applicable.
 
 ---
 
@@ -35,8 +23,6 @@ Secrets and environment configuration are managed via environment files with res
 
 ---
 
-## Technology Stack
-
 || Layer | Stack |
 |---|---|
 | Runtime | Linux (Ubuntu 22.04+) |
@@ -46,75 +32,29 @@ Secrets and environment configuration are managed via environment files with res
 
 ---
 
-## Features
-
-- Operational dashboard and monitoring (per repo).
-- Exportable data / reports where supported.
-- Extensible service-based design.
-- Dark-themed UI where applicable.
-
----
-
-## Getting Started
+## Quickstart
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/OneByJorah/JorahOne.git
 cd JorahOne
-
-# 2. Install dependencies
-# (see specific subproject docs)
-
-# 3. Start the service
-# (see Service Management below)
+# Install dependencies and start services
 ```
+Verify service status with `systemctl status jorahone`.
 
----
+## Configuration
 
-## Service Management
+Environment variables are documented in-repo. See [Environment Variables](#environment-variables) for the full table.
 
-```bash
-# Start the service (example)
-sudo systemctl start JorahOne.service
-sudo systemctl enable JorahOne.service
-```
+## Roadmap
 
-Access the service via your configured localhost port or reverse proxy.
-
----
-
-## Project Structure
-
-```
-JorahOne/
-├── README.md
-├── (additional project files)
-```
-
----
-
-## Screenshots
-
-All screenshots are live captures from the local dev instance.
-
-_(Screenshots will be added after build/run capture.)_
-
----
-
-## Contributing
-
-1. Create a feature branch off `main`.
-2. Follow the existing code style.
-3. Submit a PR with description and screenshots for UI changes.
-
----
+- Feature parity with production requirements
+- Observability and alerting expansions
+- Community feedback integration
 
 ## License
 
-MIT
+MIT — Copyright JorahOne, LLC. See [LICENSE](LICENSE) for details.
 
 ---
 
-## Author
-
-Built by **Jhonattan L. Jimenez**.
+[OneByJorah](https://github.com/OneByJorah) · [JorahOne-Services](https://github.com/JorahOne-Services)
