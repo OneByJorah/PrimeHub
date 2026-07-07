@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2026-07-04
+## [1.0.0] - 2026-07-07
 ### Added
 - Initial release
+- Dockerfile with multi-stage build
+- docker-compose.yml with healthchecks
+- .env.example with placeholder values
