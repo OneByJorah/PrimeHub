@@ -1,4 +1,4 @@
-# JorahOne Portfolio — Comprehensive Repository Audit
+# PrimeHub Portfolio — Comprehensive Repository Audit
 
 **Generated:** July 4, 2026
 **Total Repositories:** 29
@@ -159,7 +159,7 @@
 | Code Quality | ⚠️ Limited code visible |
 | Key Improvements | Add LICENSE, CI/CD, tests, expand README |
 
-### 9. JorahOne (Profile Repo)
+### 9. PrimeHub (Profile Repo)
 | Category | Score | Notes |
 |----------|-------|-------|
 | **Overall** | 35/100 | Minimal profile repo |
@@ -508,7 +508,7 @@ Fair (50-59):        StackDeploy (65), StackDeploy-Dashboard (50), ChatForge (55
                      NetVault (55), jorahone-ai-stack (50), J1-NOC-Nexus (55), 
                      hermes-3d-office (55), autoresearch (55), arah (50), 
                      EdgeRouter (50), it-training-system (50), CommandDesk (58), CostForge (45)
-Needs Work (30-49):  msp-dashboard (45), JorahOne (35), J1-MSP-Toolkit (35),
+Needs Work (30-49):  msp-dashboard (45), PrimeHub (35), J1-MSP-Toolkit (35),
                      ADSentinel (45), EdgeGateway (40), GroundStation (45),
                      ChronoGuard (45), agent-mission-control (30)
 ```
