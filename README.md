@@ -21,6 +21,10 @@
 
 ---
 
+## 📸 Screenshot
+
+This is a CLI/backend-only tool. No screenshots available.
+
 ## 📋 Portfolio Overview
 
 **29 repositories** spanning infrastructure monitoring, AI/LLM tooling, network operations, security, and DevOps automation. Every repository has been standardized with MIT licensing, security policies, contribution guidelines, and CI/CD workflows.
