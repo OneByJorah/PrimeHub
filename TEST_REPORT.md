@@ -1,4 +1,4 @@
-# JorahOne Portfolio — Test Report
+# PrimeHub Portfolio — Test Report
 
 **Generated:** July 4, 2026
 

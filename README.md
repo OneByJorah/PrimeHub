@@ -7,7 +7,7 @@
 <br>
 
 <div align="center">
-  <h1>🚀 JorahOne Infrastructure Suite</h1>
+  <h1>🚀 PrimeHub Infrastructure Suite</h1>
   <p><strong>Professional open-source tools for infrastructure monitoring, AI agent management, and DevOps automation</strong></p>
   <p>
     <a href="https://github.com/OneByJorah">@OneByJorah</a> •
@@ -116,8 +116,8 @@ This is a CLI/backend-only tool. No screenshots available.
 
 ```bash
 # Clone the entire portfolio
-mkdir -p ~/Projects/JorahOne
-cd ~/Projects/JorahOne
+mkdir -p ~/Projects/PrimeHub
+cd ~/Projects/PrimeHub
 
 # Browse the dashboard
 open dashboard.html
@@ -131,7 +131,7 @@ cat SECURITY_REPORT.md
 
 ## 📄 License
 
-All repositories in the JorahOne portfolio are licensed under **MIT** unless otherwise noted.
+All repositories in the PrimeHub portfolio are licensed under **MIT** unless otherwise noted.
 
 © 2026 Jhonattan L. Jimenez — [@OneByJorah](https://github.com/OneByJorah)
 

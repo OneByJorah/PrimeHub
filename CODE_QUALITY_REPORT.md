@@ -1,6 +1,6 @@
 
 # CODE QUALITY REPORT
-> JorahOne Portfolio — Ruff Analysis
+> PrimeHub Portfolio — Ruff Analysis
 > Generated: July 4, 2026
 
 ## Summary

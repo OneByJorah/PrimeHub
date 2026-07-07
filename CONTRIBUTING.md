@@ -1,4 +1,4 @@
-# Contributing to JorahOne Projects
+# Contributing to PrimeHub Projects
 
 First off, thank you for considering contributing! It's people like you that make
 this community great.

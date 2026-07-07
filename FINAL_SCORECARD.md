@@ -1,4 +1,4 @@
-# JorahOne Portfolio — Final Scorecard
+# PrimeHub Portfolio — Final Scorecard
 
 Generated: July 4, 2026
 

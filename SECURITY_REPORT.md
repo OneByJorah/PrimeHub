@@ -1,4 +1,4 @@
-# JorahOne Portfolio — Security Report
+# PrimeHub Portfolio — Security Report
 
 **Generated:** July 4, 2026
 **Total Repositories Scanned:** 29
@@ -31,7 +31,7 @@ No API keys, tokens, passwords, or private keys were found hardcoded in any sour
 ### 🟡 Medium: 1 Issue
 
 **Committed .env file in `arah/profiles/local/.env`**
-- **Path:** `~/Projects/JorahOne/arah/profiles/local/.env`
+- **Path:** `~/Projects/PrimeHub/arah/profiles/local/.env`
 - **Risk:** Contains deployment configuration that may include local credentials
 - **Action:** Should be moved to `.env.example` template and added to `.gitignore`
 

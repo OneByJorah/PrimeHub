@@ -1,7 +1,15 @@
-repo: JorahOne
-class: Documentation / Meta
+repo: PrimeHub
+class: Documentation, Dashboard, Web
 org: OneByJorah
+owner: Jhonattan L. Jimenez
 license: MIT
-production_score: 85
-last_audit: "2026-07-05"
+production_score: 88
+last_audit: 2026-07-05T21:13:00Z
+last_publish: 2026-07-05
+standards_version: "2.1"
+dependencies: []
 deploy_target: scratch
+tailscale_only: false
+public_facing: true
+community_sla_hours: 48
+adoption_tracked: true

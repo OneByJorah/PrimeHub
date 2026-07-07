@@ -1,4 +1,4 @@
-name: JorahOne Portfolio CI
+name: PrimeHub Portfolio CI
 
 on:
   push:
