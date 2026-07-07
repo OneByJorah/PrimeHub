@@ -1,0 +1,25 @@
+# ─────────────────────────────────────────────────────────────
+# JorahOne — Organization Profile & Operations Hub
+# Static landing page served via nginx
+# ─────────────────────────────────────────────────────────────
+# Usage:
+#   docker compose up -d
+#   # Open http://localhost:${PORT:-8080}
+# ─────────────────────────────────────────────────────────────
+
+services:
+  jorahone:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jorahone
+    image: jorahone/jorahone:latest
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
