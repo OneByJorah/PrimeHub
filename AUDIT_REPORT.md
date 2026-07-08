@@ -1,4 +1,4 @@
-# AUDIT_REPORT - JorahOne
+# AUDIT_REPORT - PrimeHub
 **Date:** 2026-07-05
 **Score:** 85/100 - OPERATIONAL
 - Portfolio overview/org repo - documentation only
