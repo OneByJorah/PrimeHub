@@ -1,4 +1,4 @@
-# JorahOne — Fixes and Enhancements
+# PrimeHub — Fixes and Enhancements
 
 ## Changes Made
 
