@@ -8,12 +8,12 @@
 # ─────────────────────────────────────────────────────────────
 
 services:
-  jorahone:
+  primehub:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: jorahone
-    image: jorahone/jorahone:latest
+    container_name: primehub
+    image: primehub/primehub:latest
     ports:
       - "${PORT:-8080}:80"
     restart: unless-stopped
