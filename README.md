@@ -133,7 +133,7 @@ cat SECURITY_REPORT.md
 
 All repositories in the PrimeHub portfolio are licensed under **MIT** unless otherwise noted.
 
-© 2026 Jhonattan L. Jimenez — [@OneByJorah](https://github.com/OneByJorah)
+© 2026 Jhonattan L. Jimenez / JorahOne LLC — [@OneByJorah](https://github.com/OneByJorah)
 
 ---
 
