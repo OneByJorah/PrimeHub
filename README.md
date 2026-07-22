@@ -1,59 +1,55 @@
 # PrimeHub
 
-![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Standardization](https://img.shields.io/badge/standardization-100%25-success)
-
 Portfolio hub for professional open-source tools spanning infrastructure monitoring, AI agent management, and DevOps automation.
+
+![status](https://img.shields.io/badge/status-active-FFB300?style=flat-square)
+![language](https://img.shields.io/badge/html-static-0d0d0c?style=flat-square)
+![license](https://img.shields.io/badge/license-MIT-FFB300?style=flat-square)
 
 ## Overview
 
-PrimeHub is a static documentation and portfolio hub. It tracks repository health, standardization status, and links to the tools that make up the OneByJorah ecosystem.
+PrimeHub is the central portfolio dashboard for the OneByJorah / JorahOne ecosystem. It provides a live-updating overview of repository health, standardization status, and deployment metrics across the entire J1 infrastructure stack — 29+ tools spanning NOC dashboards, AI agents, network security, and self-hosted services.
 
 ## Features
 
-- Portfolio overview of all OneByJorah repositories
-- Standardization status badges and metrics
-- Links to dashboards, audits, and reports
-- Static HTML dashboard (`dashboard.html`)
+- Real-time repository health scoring with color-coded status indicators
+- Interactive Chart.js visualizations (language distribution, health trends)
+- Repo cards with descriptions, topics, and deployment status
+- Responsive dark-mode design matching the J1 brand palette
+- Docker-ready static site (nginx:alpine, <15MB image)
+- Auto-syncs with `repositories.json` and `j1.yaml` manifest data
 
-## Tech Stack
+## Architecture / Tech Stack
 
-- Static HTML / Markdown
-- GitHub Pages-ready
+- **Frontend**: Vanilla HTML/CSS/JS, Chart.js
+- **Backend**: Static files served via nginx:alpine
+- **Data**: `repositories.json` (repo metadata), `j1.yaml` (operational config)
+- **Deployment**: Docker Compose, single-container nginx
 
-## Getting Started
+## Installation
 
 ```bash
 git clone https://github.com/OneByJorah/PrimeHub.git
 cd PrimeHub
-open dashboard.html
+
+# Option 1: Docker
+docker compose up -d --build
+# Open http://localhost:8080
+
+# Option 2: Local server
+python3 -m http.server 8080
+# Open http://localhost:8080
 ```
 
-## Project Structure
+## Configuration
 
-```
-PrimeHub/
-├── README.md              # This file
-├── dashboard.html         # Portfolio dashboard
-├── repositories.json      # Repository metadata snapshot
-├── LICENSE                # MIT license
-├── SECURITY.md            # Security policy
-├── CONTRIBUTING.md        # Contribution guidelines
-└── CODE_OF_CONDUCT.md     # Code of conduct
-```
-
-## Environment Variables
-
-No runtime environment variables are required for this static hub.
-
-## Contributing
-
-Please see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Security
-
-Report vulnerabilities privately to **info@jorahone.com**. See [SECURITY.md](SECURITY.md).
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `8080` | Host port for the dashboard |
 
 ## License
 
-MIT © Jhonattan L. Jimenez
+MIT — see [LICENSE](LICENSE).
+
+---
+Part of the JorahOne / J1 ecosystem — portfolio hub for the VIDE OIT infrastructure.
