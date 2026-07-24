@@ -1,31 +1,24 @@
 <div align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white">
-</div>
 
-<br>
+![PrimeHub banner](docs/assets/banner.svg)
 
-<div align="center">
-  <h1>PrimeHub</h1>
-  <p><strong>JorahOne Infrastructure Portfolio Hub</strong></p>
-  <p>Central dashboard for repo health, standardization status, and ecosystem overview.</p>
-  <p>
-    <a href="#features">Features</a> •
-    <a href="#quick-start">Quick Start</a> •
-    <a href="#architecture">Architecture</a> •
-    <a href="#contributing">Contributing</a>
-  </p>
+# PrimeHub
+
+Portfolio hub for OneByJorah infrastructure
+
+![License](https://img.shields.io/badge/license-MIT-brightgreen)
+![Language](https://img.shields.io/badge/language-HTML-blue)
 </div>
 
 ---
 
-## Screenshot
+<p align="center">
+  <img src="docs/assets/screenshot.png" alt="PrimeHub preview" width="90%">
+</p>
 
-![PrimeHub Dashboard](docs/screenshot.png)
-*Portfolio hub dashboard showing repository health and ecosystem metrics.*
+<br>
+
+---
 
 ## Features
 
@@ -44,7 +37,6 @@
 git clone https://github.com/OneByJorah/PrimeHub.git
 cd PrimeHub
 
-# Serve locally
 python3 -m http.server 8080
 # Or
 npx serve .
@@ -121,7 +113,18 @@ MIT © Jhonattan L. Jimenez
 
 ---
 
-<div align="center">
-  <p>Central hub for JorahOne infrastructure.</p>
-  <p><a href="https://github.com/OneByJorah">@OneByJorah</a></p>
-</div>
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). All contributions follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## 🔒 Security
+
+Found a vulnerability? Please follow our [Security Policy](SECURITY.md) and report privately to `security@jorahone.com`.
+
+## 📄 License
+
+[MIT License](LICENSE) © Jhonattan L. Jimenez (OneByJorah)
+
+---
+
+<p align="center">Built with 🌴 by <a href="https://github.com/OneByJorah">OneByJorah</a> · <a href="https://jorahone.com">jorahone.com</a></p>

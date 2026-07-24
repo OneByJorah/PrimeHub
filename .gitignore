@@ -22,3 +22,6 @@ build/
 *.log
 # Pipeline reports
 reports/
+
+# OneByJorah portfolio tooling
+.venv-screenshot/
