@@ -13,7 +13,7 @@ Portfolio hub for OneByJorah infrastructure
 ---
 
 <p align="center">
-  <img src="docs/assets/screenshot.png" alt="PrimeHub preview" width="90%">
+  <img src="docs/screenshots/dashboard_desktop.png" alt="PrimeHub preview" width="90%">
 </p>
 
 <br>
@@ -23,13 +23,11 @@ Portfolio hub for OneByJorah infrastructure
 ## Features
 
 - **Ecosystem Overview** — Visual dashboard of all JorahOne repositories.
-- **Health Monitoring** — Real-time repo health metrics and status.
-- **Standardization Tracking** — Verify README, license, and config compliance.
-- **Dependency Graph** — Visualize relationships between projects.
-- **Deployment Status** — CI/CD pipeline status across all repos.
+- **Health Scores** — Per-repo score, grade, and health bar at a glance.
+- **Standardization Tracking** — License, Docker, CI/CD, and test status per repo.
+- **Score Distribution & Language Breakdown** — Chart.js visualizations.
 - **Lightweight** — Pure HTML/CSS/JS, no build tools required.
-- **GitHub API Integration** — Live data from GitHub's API.
-- **Chart.js Visualizations** — Interactive charts and graphs.
+- **Static Snapshot Data** — No backend or live API calls; data mirrors the `repositories.json` audit export.
 
 ## Quick Start
 
@@ -42,49 +40,34 @@ python3 -m http.server 8080
 npx serve .
 ```
 
-Open **http://localhost:8080** in your browser.
+Open **http://localhost:8080/dashboard.html** in your browser.
 
-### GitHub Token Setup
+## Data Source
 
-For full functionality, create a GitHub Personal Access Token:
-
-1. Go to [GitHub Settings → Developer Settings → Tokens](https://github.com/settings/tokens)
-2. Create a new token with `public_repo` scope
-3. Add to your request headers or configure in `config.js`
-
-## Configuration
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `GITHUB_ORG` | `OneByJorah` | GitHub organization to monitor |
-| `REFRESH_INTERVAL` | `300000` | Data refresh interval (ms) |
-| `THEME` | `dark` | UI theme (dark/light) |
+The dashboard is a self-contained static page. Repository data is a snapshot maintained in `repositories.json` (GitHub API metadata export for the org) and mirrored inline in `dashboard.html`. To refresh, re-export the org metadata and update both. No tokens or runtime environment variables are required — see [.env.example](.env.example).
 
 ## Architecture
 
 ```
-Browser ──API──▶ GitHub API ──▶ PrimeHub Dashboard
-                │
-                ├──▶ Repo Metadata
-                ├──▶ Health Metrics
-                ├──▶ CI/CD Status
-                └──▶ Dependency Graph
+GitHub API ──export──▶ repositories.json ──snapshot──▶ dashboard.html ──▶ Browser
+                                                          │
+                                                          ├── Stat cards
+                                                          ├── Chart.js charts
+                                                          └── Repo card grid
 ```
 
 ## Project Structure
 
 ```
 PrimeHub/
-├── index.html           # Main dashboard
-├── css/
-│   └── styles.css       # Dashboard styles
-├── js/
-│   ├── app.js           # Main application
-│   ├── github-api.js    # GitHub API client
-│   ├── charts.js        # Chart.js visualizations
-│   └── config.js        # Configuration
-├── assets/
-│   └── images/          # Dashboard images
+├── dashboard.html         # Main dashboard (self-contained HTML/CSS/JS)
+├── repositories.json      # GitHub API metadata snapshot (29 repos)
+├── AUDIT.md               # Portfolio-wide repository audit
+├── docs/
+│   ├── assets/            # Banner + screenshots
+│   └── screenshots/       # Dashboard captures
+├── docker-compose.yml     # Optional nginx container deploy
+├── Dockerfile             # Static nginx image
 └── README.md
 ```
 
@@ -92,12 +75,10 @@ PrimeHub/
 
 | Section | Description |
 |---------|-------------|
-| **Overview** | Total repos, stars, forks, issues |
-| **Health** | Repo health scores and trends |
-| **Standardization** | README, license, CI compliance |
-| **Languages** | Language distribution across repos |
-| **Activity** | Recent commits and PRs |
-| **Dependencies** | Inter-project relationships |
+| **Stats** | Total repos, CI/CD coverage, tests, Dockerized, documented, licensed |
+| **Score Distribution** | Repos per grade band (A–F) |
+| **Language Breakdown** | Primary-language distribution |
+| **Repo Cards** | Score, grade, tags, audit links, GitHub links |
 
 ## Contributing
 
@@ -105,23 +86,9 @@ Contributions are welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 
 ## Security
 
-For security concerns, see [SECURITY.md](SECURITY.md). Please report vulnerabilities to **info@jorahone.com** — do not use public issues.
+Found a vulnerability? Please follow our [Security Policy](SECURITY.md) and report privately to `security@jorahone.com` — do not open a public issue.
 
 ## License
-
-MIT © Jhonattan L. Jimenez
-
----
-
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). All contributions follow the [Code of Conduct](CODE_OF_CONDUCT.md).
-
-## 🔒 Security
-
-Found a vulnerability? Please follow our [Security Policy](SECURITY.md) and report privately to `security@jorahone.com`.
-
-## 📄 License
 
 [MIT License](LICENSE) © Jhonattan L. Jimenez (OneByJorah)
 

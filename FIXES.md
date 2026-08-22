@@ -3,6 +3,6 @@
 ## Changes Made
 
 ### Containerization
-- **Added Dockerfile** — Multi-stage build for production deployment
+- **Added Dockerfile** — nginx-based static image for production deployment
 - **Added docker-compose.yml** — Service orchestration with healthchecks
 - **Added .env.example** — Environment variable template with placeholder values
